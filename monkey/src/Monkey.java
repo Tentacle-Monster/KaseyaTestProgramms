@@ -19,15 +19,13 @@ public class Monkey {
 
     }
 
-    public void addToration(Fruit ... Fruitration){
-        ArrayList<Fruit> additionRation = (ArrayList<Fruit>) Arrays.asList(Fruitration);
-        if(ration == null)ration = additionRation;
-        else ration.addAll(additionRation);
+    public void addToRation(Fruit ... Fruitration){
+        if(ration == null)ration = new ArrayList<Fruit>();
+        else ration.addAll( Arrays.asList(Fruitration));
     }
     public void removeFromRation(Fruit ... Fruitration){
-        ArrayList<Fruit> excessRation = (ArrayList<Fruit>) Arrays.asList(Fruitration);
         if(ration == null)ration =new ArrayList<Fruit>();
-        else ration.removeAll(excessRation);
+        else ration.removeAll(Arrays.asList(Fruitration));
     }
 
 
@@ -36,7 +34,7 @@ public class Monkey {
     public int search(FruitTree target){
         int fruits = 0;
         try {
-            if(MyArraylistHelper.isFruitInList(target.getFruittype(),this.ration) && target.getRoot()!=null)
+            if(MyArraylistHelper.isItemInList(target.getFruittype(),this.ration) && target.getRoot()!=null)
             fruits = searchAtBranch(target.getRoot());
         } catch (Exception e) {
             e.printStackTrace();

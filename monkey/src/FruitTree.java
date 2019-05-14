@@ -3,29 +3,29 @@ import java.util.Random;
 public class FruitTree {
     protected Branch root;
     protected Fruit fruittype;
-    private static final int MAXHEIGHT = 5;
+    private static final int MAXBRANCHGENERATION = 5;
 
     public FruitTree(Branch root, Fruit fruittype) {
         this.root = root;
         this.fruittype = fruittype;
     }
 
-    public FruitTree(Fruit fruittype, int height) {
+    public FruitTree(Fruit fruittype, int branchGenerations, Random random) {
         this.fruittype = fruittype;
-        Random random = new Random();
-        root = new Branch(null,random,random.nextInt(Branch.MAXCHILDCOUNT),height,0);
+        if(random == null) random = new Random();
+        root = new Branch(null,random,branchGenerations,Branch.MAXCHILDCOUNT,Branch.MAXFRUITCOUNT);
     }
 
-    public FruitTree(Fruit fruittype) {
+    public FruitTree(Fruit fruittype,Random random) {
         this.fruittype = fruittype;
-        Random random = new Random();
-        root = new Branch(null,random,random.nextInt(Branch.MAXCHILDCOUNT),MAXHEIGHT,0);
+        if(random == null) random = new Random();
+        root = new Branch(null,random,MAXBRANCHGENERATION, Branch.MAXCHILDCOUNT, Branch.MAXFRUITCOUNT);
     }
 
-    public FruitTree(Fruit fruittype, int height, int maxchild, int maxfruit) {
+    public FruitTree(Fruit fruittype, int branchGenerations, int maxchild, int maxfruit,Random random) {
         this.fruittype = fruittype;
-        Random random = new Random();
-        root = new Branch(null,random,random.nextInt(maxchild),height,0,maxchild,maxfruit);
+        if(random == null) random = new Random();
+        root = new Branch(null,random,random.nextInt(maxchild),branchGenerations,0,maxchild,maxfruit);
     }
 
 

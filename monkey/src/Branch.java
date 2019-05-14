@@ -16,30 +16,32 @@ public class Branch {
         this.nomberOfFruits = nomberOfFruits;
     }
 
-  //  protected Branch generateRandomBranch(Random random, )
 
-    public Branch(Branch root,Random random , int nomberOfChilds, int branchingsLeft, int nomberOfFruits) {
-          Init(root,random, nomberOfChilds, branchingsLeft,nomberOfFruits, MAXCHILDCOUNT, MAXFRUITCOUNT);
+    public Branch(Branch root, Random random, int generationsLeft, int maxFruit, int maxChild){
+        Init(root,random,generationsLeft,random.nextInt(maxChild),random.nextInt(maxFruit),maxChild,maxFruit);
     }
 
-    public Branch(Branch root,Random random , int nomberOfChilds, int branchingsLeft, int nomberOfFruits, int maxchild, int maxfruit) {
-         Init(root,random,nomberOfChilds,branchingsLeft,nomberOfFruits,maxchild,maxfruit);
+    public Branch(Branch root,Random random ,  int generationsLeft, int maxFruit, int maxChild,int nomberOfChilds, int nomberOfFruits) {
+          Init(root,random,generationsLeft,nomberOfChilds,nomberOfFruits,maxChild,maxFruit);
+    }
+
+    public Branch(Branch root,Random random ,  int generationsLeft) {
+        Init(root,random,generationsLeft,random.nextInt(MAXCHILDCOUNT),random.nextInt(MAXFRUITCOUNT),MAXCHILDCOUNT,MAXFRUITCOUNT);
     }
 
 
-    private  void Init(Branch root,Random random , int nomberOfChilds, int branchingsLeft, int nomberOfFruits, int maxchild, int maxfruit) {
+    private  void Init(Branch root,Random random ,  int generationsLeft, int nomberOfChilds, int nomberOfFruits, int maxchild, int maxfruit) {
         this.root = root;
         if (random == null) random = new Random();
         this.nomberOfFruits = nomberOfFruits;
-        if(branchingsLeft !=0){
+        if(generationsLeft !=0){
             childs = new Branch[nomberOfChilds];
             for(int i=0;i<nomberOfChilds;i++){
-                childs[i]=new Branch(this,random,random.nextInt(maxchild),branchingsLeft-1,random.nextInt(maxfruit));
+                childs[i]=new Branch(this, random, generationsLeft-1,maxfruit,maxchild);
             }
         }
     }
 
-  //  public Branch (Branch root, Random random, int branchingsLeft)
 
     public Branch[] getChilds() {
         return childs;
