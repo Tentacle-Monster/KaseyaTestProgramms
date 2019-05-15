@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class MonkeyFound {
+public class Main {
     public static void main(String[] args) {
         Fruit apple = new SimpleFruit(1);
         Fruit mango = new SimpleFruit(2);
@@ -15,9 +15,9 @@ public class MonkeyFound {
                 "\n > Ergan eats mango" +
                 "\n > Vania eats apple and mango" +
                 "\n > Alfred eats apple, banana and mango" );
+        FruitTree bananatree2 = new FruitTree(banana,200,2,1,random);
         FruitTree mangotree = new FruitTree(mango,random);
-        FruitTree bananatree1 = new FruitTree(banana,random);
-        FruitTree bananatree2 = new FruitTree(banana,random);
+        FruitTree bananatree1 = new FruitTree(banana,0,random);
         FruitTree appletree = new FruitTree(apple,random);
         System.out.println("Alfred & banana tree");
         System.out.println(alfred.search(bananatree1));
@@ -38,10 +38,6 @@ public class MonkeyFound {
         vasia.addToRation(apple);
         System.out.println("Vasia & apple tree, second try");
         System.out.println(vania.search(appletree));
-
-
-
-
 
 
 

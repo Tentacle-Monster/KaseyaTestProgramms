@@ -48,7 +48,7 @@ public class Monkey {
         fruits += target.getNomberOfFruits();
         if(childs != null)
          for(int i =0; i<childs.length;i++ ){
-            fruits += childs[i].getChilds().length;
+            fruits += searchAtBranch(childs[0]);
         }
 
         return fruits;

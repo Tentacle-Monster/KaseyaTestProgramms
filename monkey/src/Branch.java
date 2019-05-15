@@ -1,8 +1,7 @@
 import java.util.Random;
 
 public class Branch {
-    public static final int MAXFRUITCOUNT=10;
-    public static final int MAXCHILDCOUNT=10;
+
 
 
 
@@ -18,17 +17,12 @@ public class Branch {
 
 
     public Branch(Branch root, Random random, int generationsLeft, int maxFruit, int maxChild){
-        Init(root,random,generationsLeft,random.nextInt(maxChild),random.nextInt(maxFruit),maxChild,maxFruit);
+        Init(root,random,generationsLeft,random.nextInt(maxChild+1),random.nextInt(maxFruit+1),maxChild,maxFruit);
     }
 
     public Branch(Branch root,Random random ,  int generationsLeft, int maxFruit, int maxChild,int nomberOfChilds, int nomberOfFruits) {
           Init(root,random,generationsLeft,nomberOfChilds,nomberOfFruits,maxChild,maxFruit);
     }
-
-    public Branch(Branch root,Random random ,  int generationsLeft) {
-        Init(root,random,generationsLeft,random.nextInt(MAXCHILDCOUNT),random.nextInt(MAXFRUITCOUNT),MAXCHILDCOUNT,MAXFRUITCOUNT);
-    }
-
 
     private  void Init(Branch root,Random random ,  int generationsLeft, int nomberOfChilds, int nomberOfFruits, int maxchild, int maxfruit) {
         this.root = root;
