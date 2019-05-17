@@ -4,18 +4,21 @@ package com.mycompany.app;
 import org.jsoup.Jsoup;
 import org.jsoup.helper.Validate;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 //import com.foo.Bar;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 
 public class App
 
 {
     private static final String PATH_TO_SETTINGS = "Settings.xml";
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
 
-        try {
+     /*   try {
             Controller controller = new Controller(PATH_TO_SETTINGS);
             controller.load();
             controller.setCurrientAssetNomber(0);
@@ -25,27 +28,28 @@ public class App
 
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
         //alpha.parse();
 
 
 
 
-     // parse zombie table
+     // parse zombie table------------------------------------------------
 
 
-     /*
+     Document doc;
 
 
-     try {
+
             File input = new File("/home/romchik/Downloads/Telegram Desktop/Spanning Backup Domain Admin_ Progress Monitor.html");
             doc = Jsoup.parse(input, "UTF-8", "http://example.com/");
 
-        }catch (Exception e){
-            System.out.println("unable to load page!");
-            System.out.println(url);
-        }
-             ArrayList<Float> persents = new ArrayList<Float>();
+    double sum =0;
+     int more100 =0;
+     int zero = 0;
+     int in_activity=0;
+     int undef =0;
+
 
   Element table = doc.select("tbody").get(1); //select the first table.
         Elements rows = table.select("tr");
@@ -54,20 +58,28 @@ public class App
             Elements cols = row.select("td");
 
             try {
-                System.out.println(cols.get(16).ownText());
+               // System.out.println(cols.get(16).ownText());
                 float a = Float.parseFloat(cols.get(16).ownText());
-                if(a>0 && a<99.9f)
-                persents.add(a);
-            }catch (Exception e){
+                in_activity++;
+                if(a>=0.0001 && a<100.0001f){
 
+                    sum+=a;
+                    if(a>99.99) {more100 ++;
+                    System.out.println(cols.get(16).ownText());}
+
+                }
+                else zero++;
+
+
+            }catch (Exception e){
+                    undef++;
             }
 
         }
-        float sum = 0;
-        for(float cur: persents){
-            sum+=cur;
-        }
-        System.out.println(sum+"/"+persents.size()+"="+sum/persents.size());
-*/
+        System.out.print("\033\143");//очистка вывода
+        System.out.println("всего полей : " + rows.size()+ "\nиз них как числа разпознаны :"+in_activity+"\n100% выполнены:" + more100 + "\n 0% выполнены:" +zero + "\n пусты: "+undef);
+        System.out.println("сумма чисел = " +sum);
+        System.out.println(sum+"/"+in_activity+"="+sum/in_activity);
+
     }
 }
