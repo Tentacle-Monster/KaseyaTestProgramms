@@ -8,11 +8,16 @@ public class Controller {
     private SettingsLoader loader;
     private ArrayList<ParsingAsset>assets;
     private int currientAssetNomber;
+    private UserInterface user;
+    private Thread userThread;
 
     public Controller(String settingsAdress) throws Exception {
       //  System.out.println(settingsAdress);
         loader = new SettingsLoader(settingsAdress);
         load();
+        user = new UserInterface(this);
+        userThread = new Thread(user);
+        userThread.start();
 
     }
 
@@ -38,17 +43,21 @@ public class Controller {
     public void addAsset( ParsingAsset addition){
         assets.add(addition);
     }
-    public void refresh() throws Exception{
+    public boolean refresh() throws Exception{
         if(parser!=null)stop();
+
         parser = new Parser(assets.get(currientAssetNomber));
-        start();
+        System.out.println(assets.get(currientAssetNomber).url);
+        return start();
     }
-    public void start(){
+    public boolean start(){
         pasingThread = new Thread(parser);
         pasingThread.start();
+        return !pasingThread.isInterrupted();
     }
-    public void stop(){
+    public boolean stop(){
         pasingThread.interrupt();
+        return pasingThread.isInterrupted();
     }
     public void save() throws Exception{
         loader.rebuildDocument(assets.toArray(new ParsingAsset[0]));
@@ -57,5 +66,23 @@ public class Controller {
     public void load() throws Exception {
         assets = loader.loadFromFile();
     }
+    public void die(){
+        try {
+            save();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        stop();
+        userThread.interrupt();
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+
+        }finally {
+            System.exit(1);
+        }
+    }
+
+
 
 }

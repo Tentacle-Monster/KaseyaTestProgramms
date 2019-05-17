@@ -23,18 +23,14 @@ DocumentBuilder   documentBuilder;
         this.settingsPath = settingsPath;
         documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
         openFlie();
-        if(document == null) System.out.println("fuck!");
+
     }
 
     public ArrayList<ParsingAsset> loadFromFile() throws Exception{
-System.out.println(document);
+
 
         if(document==null)openFlie();
-        System.out.println(document);
-        System.out.println(document.getPrefix());
-
         NodeList configs = document.getElementsByTagName("parsingAsset");
-        System.out.println(configs);
         ArrayList<ParsingAsset> all = getAssets(configs);
        return  all;
 
@@ -43,9 +39,7 @@ System.out.println(document);
 
     public ArrayList<ParsingAsset> getAssets(NodeList assetList) {
         ArrayList<ParsingAsset> result  = new ArrayList<ParsingAsset>();
-       // System.out.println(assetList.getLength() +"|"+result.size());
         for (int i=0; i<assetList.getLength();i++){
-           // result.set(i, getAsset(assetList.item(i)));
             result.add(getAsset(assetList.item(i)));
         }
         return result;
@@ -53,9 +47,7 @@ System.out.println(document);
     }
 
     private ParsingAsset getAsset(Node asset){
-       // System.out.println(asset+"assets");
         NamedNodeMap raw_atributes= asset.getAttributes();
-        System.out.println(raw_atributes.getLength()+"THIS ASSET");
         String assetUrl = raw_atributes.getNamedItem("URL").getNodeValue();
         boolean caseEqualization = false;
         if(raw_atributes.getNamedItem("caseEqualization")!=null) caseEqualization=Boolean.parseBoolean(raw_atributes.getNamedItem("caseEqualization").getNodeValue());
@@ -113,12 +105,10 @@ public void rebuildDocument( ParsingAsset[] assets){
 
 private void openFlie()throws Exception{
 
-    System.out.println(documentBuilder);
     try{  document = documentBuilder.parse(new File(settingsPath));
     }
       catch (FileNotFoundException e){ e.fillInStackTrace();}
     if(document==null){
-        System.out.println("np settings file!");
         /*File file;
         file = new File(getClass().getResource(PATH_TO_DEFAULT_SETTINGS).toURI());
         BufferredReader reader = new BufferedReader(new FileReader(file));
@@ -133,7 +123,6 @@ private void openFlie()throws Exception{
         //File file = new File(classLoader.getResource(settingsPath).getFile());
        // document = documentBuilder.parse(file);
       }
-    System.out.println(document);
     }
 
     public void saveFile()throws Exception{

@@ -20,19 +20,20 @@ public class ParsingAsset {
     public ParsingAsset() {
     }
 
-    public void print(){
-        printMinimum();
-        System.out.println("Keywords:");
-        printKeywords();
-
+    public String getFullString(){
+        String result=getMinimumString();
+        result+= "\nKeywords:\n";
+        result+=getKeywordsString();
+return result;
     }
-    public void printMinimum(){
-        System.out.println("URL: "+ url + "  | delay: " + delay);
+    public String getMinimumString(){
+        return ("URL: "+ url + "  | delay: " + delay);
     }
-    public void printKeywords(){
-
+    public String getKeywordsString(){
+String result = new String("");
         for (int i=0;i<keywords.length;i++){
-            System.out.println("    "+i+") "+keywords[i]);
+            result+=("\n    "+i+") "+keywords[i]);
         }
+        return result;
     }
 }
