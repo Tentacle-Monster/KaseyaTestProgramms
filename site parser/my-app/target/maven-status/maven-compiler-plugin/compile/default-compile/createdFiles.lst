@@ -1,1 +1,9 @@
+com/mycompany/app/ParsingAsset.class
+com/mycompany/app/KeynameParser.class
+com/mycompany/app/WebInterface.class
 com/mycompany/app/App.class
+com/mycompany/app/Parser.class
+com/mycompany/app/SettingsLoader.class
+com/mycompany/app/Controller.class
+com/mycompany/app/UserInterface.class
+com/mycompany/app/Parser$1.class

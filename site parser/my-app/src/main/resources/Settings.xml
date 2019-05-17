@@ -1,0 +1,41 @@
+<Settings>
+    <parsingAsset URL = "https://www.pornhub.com/"  delay = "12" caseEqualization="true">
+        <Keyword>anal</Keyword>
+        <Keyword>squirt</Keyword>
+        <Keyword>fingering</Keyword>
+        <Keyword>Inside</Keyword>
+        <Keyword>MFM</Keyword>
+        <Keyword>Creampie</Keyword>
+        <Keyword>Orgasm</Keyword>
+    </parsingAsset>
+    <parsingAsset URL = "abbb1" caseEqualization="false">
+        <Keyword>a2</Keyword>
+        <Keyword>aa2</Keyword>
+        <Keyword>aaa2</Keyword>
+        <Keyword>aaaa2</Keyword>
+        <Keyword>aaaaa2</Keyword>
+        <Keyword>aaaaaa2</Keyword>
+        <Keyword>b?c</Keyword>
+    </parsingAsset>
+
+    <parsingAsset URL = "cbcbcbc1"  delay = "20478" caseEqualization="false">
+        <Keyword>-a</Keyword>
+        <Keyword>asa</Keyword>
+        <Keyword>awdaa</Keyword>
+        <Keyword>aawefaa</Keyword>
+        <Keyword>aawfeaaa</Keyword>
+        <Keyword>aaaafaa</Keyword>
+        <Keyword>bf?</Keyword>
+    </parsingAsset>
+
+    <parsingAsset URL = "" caseEqualization="false">
+        <Keyword>aee</Keyword>
+        <Keyword></Keyword>
+        <Keyword>aaa</Keyword>
+        <Keyword>efaaaa</Keyword>
+        <Keyword>aaaaa</Keyword>
+        <Keyword>efaaaa</Keyword>
+        <Keyword>b?</Keyword>
+    </parsingAsset>
+
+</Settings>
