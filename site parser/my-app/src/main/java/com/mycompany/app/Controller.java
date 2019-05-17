@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Controller {
     private Parser parser;
+    private Thread pasingThread;
     private SettingsLoader loader;
     private ArrayList<ParsingAsset>assets;
     private int currientAssetNomber;
@@ -43,10 +44,11 @@ public class Controller {
         start();
     }
     public void start(){
-        parser.start();
+        pasingThread = new Thread(parser);
+        pasingThread.start();
     }
     public void stop(){
-        parser.stop();
+        pasingThread.interrupt();
     }
     public void save() throws Exception{
         loader.rebuildDocument(assets.toArray(new ParsingAsset[0]));

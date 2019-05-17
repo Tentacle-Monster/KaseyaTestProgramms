@@ -13,14 +13,14 @@ public class App
 
 {
     private static final String PATH_TO_SETTINGS = "Settings.xml";
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
         try {
             Controller controller = new Controller(PATH_TO_SETTINGS);
             controller.load();
             controller.setCurrientAssetNomber(0);
             controller.refresh();
-            Thread.sleep(25000);
+            Thread.sleep(1250);
             controller.stop();
 
         } catch (Exception e) {
